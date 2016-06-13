@@ -86,6 +86,8 @@ libarchive-*.zip
 
 Testing/
 libarchive/libarchive.a
+libarchive/libarchive.dll.a
+libarchive/libarchive_static.a
 libarchive/libarchive.so
 libarchive/libarchive.so.*
 
