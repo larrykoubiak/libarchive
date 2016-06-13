@@ -210,7 +210,11 @@ invalid_parameter_handler(const wchar_t * expression,
     const wchar_t * function, const wchar_t * file,
     unsigned int line, uintptr_t pReserved)
 {
-	/* nop */
+	(void) expression;
+	(void) function;
+	(void) file;
+	(void) line;
+	(void) pReserved;	/* nop */
 }
 #endif
 

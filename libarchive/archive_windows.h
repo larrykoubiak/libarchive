@@ -188,6 +188,7 @@
 #define	S_ISDIR(m)	(((m) & S_IFMT) == S_IFDIR)	/* directory */
 #define	S_ISREG(m)	(((m) & S_IFMT) == S_IFREG)	/* regular file */
 #endif
+
 #define	S_ISLNK(m)  (((m) & S_IFMT) == S_IFLNK) /* Symbolic link */
 #define	S_ISSOCK(m) (((m) & S_IFMT) == S_IFSOCK) /* Socket */
 
@@ -217,17 +218,15 @@
 #define	S_IXUSR	     _S_IXUSR
 #define	S_IWUSR	     _S_IWUSR
 #define	S_IRUSR	     _S_IRUSR
-#endif
 #define	S_IRWXG        _S_IRWXG
 #define	S_IXGRP        _S_IXGRP
 #define	S_IWGRP        _S_IWGRP
-#ifndef S_IRGRP
 #define	S_IRGRP        _S_IRGRP
-#endif
 #define	S_IRWXO        _S_IRWXO
 #define	S_IXOTH        _S_IXOTH
 #define	S_IWOTH        _S_IWOTH
 #define	S_IROTH        _S_IROTH
+#endif
 
 #endif
 

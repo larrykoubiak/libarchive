@@ -2523,8 +2523,8 @@ get_tmfromtime(struct tm *tm, time_t *t)
 #if HAVE_LOCALTIME_R
 	tzset();
 	localtime_r(t, tm);
-#elif HAVE__LOCALTIME64_S
-	_localtime64_s(tm, t);
+/*#elif HAVE__LOCALTIME64_S
+	_localtime64_s(tm, t);*/
 #else
 	memcpy(tm, localtime(t), sizeof(*tm));
 #endif
@@ -4072,9 +4072,10 @@ write_information_block(struct archive_write *a)
 	}
 	memset(info.s, 0, info_size);
 	opt = 0;
-#if defined(HAVE__CTIME64_S)
+/*#if defined(HAVE__CTIME64_S)
 	_ctime64_s(buf, sizeof(buf), &(iso9660->birth_time));
-#elif defined(HAVE_CTIME_R)
+#elif defined(HAVE_CTIME_R)*/
+#if defined(HAVE_CTIME_R)
 	ctime_r(&(iso9660->birth_time), buf);
 #else
 	strncpy(buf, ctime(&(iso9660->birth_time)), sizeof(buf)-1);

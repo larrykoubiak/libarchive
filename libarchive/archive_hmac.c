@@ -48,7 +48,7 @@ int __libarchive_hmac_build_hack(void) {
 #ifdef ARCHIVE_HMAC_USE_Apple_CommonCrypto
 
 static int
-__hmac_sha1_init(archive_hmac_sha1_ctx *ctx, const uint8_t *key, size_t key_len)
+__hmac_sha1_init(archive_hmac_sha1_ctx *ctx, uint8_t *key, size_t key_len)
 {
 	CCHmacInit(ctx, kCCHmacAlgSHA1, key, key_len);
 	return 0;
@@ -77,7 +77,7 @@ __hmac_sha1_cleanup(archive_hmac_sha1_ctx *ctx)
 #elif defined(_WIN32) && !defined(__CYGWIN__) && defined(HAVE_BCRYPT_H)
 
 static int
-__hmac_sha1_init(archive_hmac_sha1_ctx *ctx, const uint8_t *key, size_t key_len)
+__hmac_sha1_init(archive_hmac_sha1_ctx *ctx, uint8_t *key, size_t key_len)
 {
 	BCRYPT_ALG_HANDLE hAlg;
 	BCRYPT_HASH_HANDLE hHash;
@@ -146,7 +146,7 @@ __hmac_sha1_cleanup(archive_hmac_sha1_ctx *ctx)
 #elif defined(HAVE_LIBNETTLE) && defined(HAVE_NETTLE_HMAC_H)
 
 static int
-__hmac_sha1_init(archive_hmac_sha1_ctx *ctx, const uint8_t *key, size_t key_len)
+__hmac_sha1_init(archive_hmac_sha1_ctx *ctx, uint8_t *key, size_t key_len)
 {
 	hmac_sha1_set_key(ctx, key_len, key);
 	return 0;
@@ -174,7 +174,7 @@ __hmac_sha1_cleanup(archive_hmac_sha1_ctx *ctx)
 #elif defined(HAVE_LIBCRYPTO)
 
 static int
-__hmac_sha1_init(archive_hmac_sha1_ctx *ctx, const uint8_t *key, size_t key_len)
+__hmac_sha1_init(archive_hmac_sha1_ctx *ctx, uint8_t *key, size_t key_len)
 {
 	HMAC_CTX_init(ctx);
 	HMAC_Init(ctx, key, key_len, EVP_sha1());
@@ -207,7 +207,7 @@ __hmac_sha1_cleanup(archive_hmac_sha1_ctx *ctx)
 
 /* Stub */
 static int
-__hmac_sha1_init(archive_hmac_sha1_ctx *ctx, const uint8_t *key, size_t key_len)
+__hmac_sha1_init(archive_hmac_sha1_ctx *ctx, uint8_t *key, size_t key_len)
 {
 	(void)ctx;/* UNUSED */
 	(void)key;/* UNUSED */

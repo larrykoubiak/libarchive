@@ -107,7 +107,7 @@ DEFINE_TEST(test_write_format_gnutar_linknames)
 	archive_entry_set_birthtime(template, 3, 30);
 	archive_entry_set_ctime(template, 4, 40);
 	archive_entry_set_mtime(template, 5, 50);
-	archive_entry_set_mode(template, S_IFLNK | 0755);
+	archive_entry_set_mode(template, 0120000 | 0755);
 	archive_entry_copy_pathname(template, "link");
 
 	for (int i = 0; i < 2000; ++i) {

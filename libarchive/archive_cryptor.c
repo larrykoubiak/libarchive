@@ -57,7 +57,7 @@ pbkdf2_sha1(const char *pw, size_t pw_len, const uint8_t *salt,
 	return 0;
 }
 
-#elif defined(_WIN32) && !defined(__CYGWIN__) && defined(HAVE_BCRYPT_H)
+/*#elif defined(_WIN32) && !defined(__CYGWIN__) && defined(HAVE_BCRYPT_H)
 #ifdef _MSC_VER
 #pragma comment(lib, "Bcrypt.lib")
 #endif
@@ -95,7 +95,7 @@ pbkdf2_sha1(const char *pw, size_t pw_len, const uint8_t *salt,
 	    salt_len, salt, derived_key_len, derived_key);
 	return 0;
 }
-
+*/
 #elif defined(HAVE_LIBCRYPTO) && defined(HAVE_PKCS5_PBKDF2_HMAC_SHA1)
 
 static int
